@@ -1,9 +1,9 @@
 'use strict';
 
-const notification = document.querySelector('[data-qa="notification"]');
+let notification = document.querySelector('[data-qa="notification"]');
 
 if (!notification) {
-  document.createElement('div');
+  notification = document.createElement('div');
   notification.setAttribute('data-qa', 'notification');
   document.body.appendChild(notification);
 }
@@ -62,7 +62,7 @@ firstPromise.then(
     notification.className = 'success';
   },
   (err) => {
-    notification.textContent = err;
+    notification.textContent = err.message;
     notification.className = 'error';
   },
 );
